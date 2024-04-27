@@ -4,7 +4,14 @@ const { User } = require("../Model/userModel");
 module.exports.postContent = async (req, res) => {
   try {
     const { link, message, type } = req.body;
-    const post = new Post({ link, type, message });
+    const user = await User.findOne({ email: req.email });
+    const post = new Post({
+      link,
+      type,
+      message,
+      name: user.name,
+      username: user.username,
+    });
     await post.save();
     await User.findOneAndUpdate(
       { email: req.email },

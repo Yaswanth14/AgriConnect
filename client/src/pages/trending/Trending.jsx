@@ -1,38 +1,137 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
+import axios from "axios";
 
 function Trending() {
   const [item, setitem] = useState("Potato");
   const [state, setstate] = useState("Karnataka");
   const [city, setcity] = useState("Bangalore");
+  const [data, setdata] = useState(null);
+
+  const handleSubmit = async () => {
+    try {
+      const res = await axios.get(
+        `${
+          import.meta.env.VITE_ML_API
+        }/request?commodity=${item}&state=${state}&market=${city}`
+      );
+
+      if (res) {
+        console.log(res);
+        setdata(res.data);
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // useEffect(() => {
+  //   handleSubmit();
+  // }, []);
 
   return (
     <Layout>
       <div className="p-5">
-        <div className="bg-[#7ED957] rounded-md">
+        <div className="bg-[#7ED957] rounded-md p-5">
           <div className="text-2xl font-extrabold">Trending Crops</div>
-          <input
-            type="text"
-            placeholder="Commodity"
-            value={item}
-            onChange={(e) => setitem(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="State"
-            value={state}
-            onChange={(e) => setstate(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="City"
-            value={city}
-            onChange={(e) => setcity(e.target.value)}
-          />
-          <button className="bg-[#00BF63] text-white font-semibold px-3 py-2 rounded-md">
-            Fetch Prices
-          </button>
+          <div className="flex space-x-3 mt-5">
+            <input
+              type="text"
+              placeholder="Commodity"
+              value={item}
+              onChange={(e) => setitem(e.target.value)}
+              className="rounded-md px-2"
+            />
+            <input
+              type="text"
+              placeholder="State"
+              value={state}
+              onChange={(e) => setstate(e.target.value)}
+              className="rounded-md px-2"
+            />
+            <input
+              type="text"
+              placeholder="City"
+              value={city}
+              onChange={(e) => setcity(e.target.value)}
+              className="rounded-md px-2"
+            />
+            <button
+              className="bg-[#00BF63] text-white font-semibold px-3 py-2 rounded-md"
+              onClick={handleSubmit}
+            >
+              Fetch Prices
+            </button>
+          </div>
         </div>
+        {/* <div>
+          {data &&
+            data.map((e, i) => (
+              <div key={i}>
+                <p>date : {e.Date}</p>
+                <p>Max Price : {e["Max Prize"]}</p>
+                <p>Min Price : {e["Min Prize"]}</p>
+                <p>Model Price : {e["Model Prize"]}</p>
+              </div>
+            ))}
+        </div> */}
+        {/*  ****************************/}
+        <div className="mt-5">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Date
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Max Price
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Min Price
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Model Price
+                </th>
+              </tr>
+            </thead>
+            {data == null && (
+              <h1 className="mt-3">
+                Fetch prices to know the current market price of {item}
+              </h1>
+            )}
+            <tbody className="bg-white divide-y divide-gray-200">
+              {data !== null &&
+                data.map((e, i) => (
+                  <tr key={i}>
+                    <td className="px-6 py-4 whitespace-nowrap">{e.Date}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {e["Max Prize"]}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {e["Min Prize"]}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {e["Model Prize"]}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+        {/* ********************** */}
       </div>
     </Layout>
   );

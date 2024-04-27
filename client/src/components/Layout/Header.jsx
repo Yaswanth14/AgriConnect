@@ -117,7 +117,7 @@ const Header = () => {
                   <div>
                     <li className="px-1 py-2 rounded-md duration-100 ease-in-out hover:bg-[#7ED957]">
                       <NavLink
-                        to={`/myprofile${auth?.user?.username}`}
+                        to={`/myprofile`}
                         className="flex space-x-5 items-center"
                       >
                         <img

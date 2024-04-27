@@ -1,8 +1,10 @@
 from flask import Flask, request, json
 from ask import Ask
 import pickle
+from flask_cors import CORS
 # create the Flask app
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 askinstance = Ask()
 
@@ -21,6 +23,7 @@ def form_example():
     # handle the POST request
     if request.method == 'POST':
         request_data = request.get_json()
+        print("start")
         nitrogen_value = request_data["N"]
         phosphorus_value = request_data["P"]
         pottasium_value = request_data["K"]
@@ -31,6 +34,7 @@ def form_example():
         input_data =[ [nitrogen_value, phosphorus_value, pottasium_value, temperature_value, humidity_value, ph_value, rainfall_value]]
         crop_prediction = model.predict(input_data)
         data = {"suggestion": crop_prediction[0]}
+        print("done")
         return json.dumps(data)
 
 @app.route('/chat', methods=['POST'])

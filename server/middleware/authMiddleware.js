@@ -10,7 +10,6 @@ function userMiddleware(req, res, next) {
     if (decodedValue.email) {
       req.email = decodedValue.email;
       req._id = decodedValue._id;
-      console.log(req.email);
       next();
     } else {
       res.json({

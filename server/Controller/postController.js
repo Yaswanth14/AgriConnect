@@ -28,3 +28,20 @@ module.exports.postContent = async (req, res) => {
     });
   }
 };
+
+module.exports.getPosts = async (req, res) => {
+  try {
+    let posts = await Post.find({});
+    res.status(200).send({
+      success: true,
+      messagee: "All posts fetched successfully!",
+      posts,
+    });
+  } catch (error) {
+    console.log("Error in posting content", error);
+    res.status(500).send({
+      success: false,
+      message: "Couldn't post the image",
+    });
+  }
+};

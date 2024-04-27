@@ -86,3 +86,22 @@ module.exports.signIn = async (req, res) => {
     });
   }
 };
+
+module.exports.getNeighbours = async (req, res) => {
+  try {
+    const location = req.params.location;
+    let users = await User.find({ location }).limit(10);
+    users = users.map((user) => ({
+      _id: user._id,
+      name: user.name,
+      image: user.image,
+    }));
+    res.send({
+      success: true,
+      users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ success: false, message: "Request failed" });
+  }
+};

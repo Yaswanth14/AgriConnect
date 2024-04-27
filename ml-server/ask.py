@@ -1,6 +1,5 @@
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chat_models import ChatOpenAI
-from typing import Optional
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
 class Ask:

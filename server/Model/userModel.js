@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const jwt = require("jsonwebtoken");
+require("dotenv/config");
 
 const userSchema = Schema(
   {
@@ -34,7 +35,7 @@ userSchema.methods.generateJWT = function () {
       _id: this._id,
       email: this.email,
     },
-    process.env.JWT_SECRET_KEY,
+    process.env.JWT_SECRET,
     { expiresIn: "7d" }
   );
   return token;

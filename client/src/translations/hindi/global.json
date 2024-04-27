@@ -1,0 +1,16 @@
+{
+    "header": {
+        "home" : "डैशबोर्ड",
+        "weather": "मौसम",
+        "trending": "ट्रेंडिंग",
+        "profile": "ट्रेंडिंग",
+        "logout": "लॉग आउट"
+    },
+    "login": {
+        "login": "लॉग इन",
+        "email": "ईमेल",
+        "password": "पासवर्ड",
+        "don't have an account": "कोई खाता नहीं है?",
+        "signup": "साइन अप करें"
+    }
+}

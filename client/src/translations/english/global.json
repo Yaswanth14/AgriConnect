@@ -1,0 +1,16 @@
+{
+    "header": {
+        "home" : "Home",
+        "weather": "Weather",
+        "trending": "Trending",
+        "profile": "My Profile",
+        "logout": "Logout"
+    },
+    "login": {
+        "login": "Login",
+        "email": "Email",
+        "password": "Password",
+        "don't have an account": "Don't have an account?",
+        "signup": "Signup"
+    }
+}

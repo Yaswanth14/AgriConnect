@@ -16,7 +16,10 @@ function Weather() {
       <div className="p-5">
         <div className="bg-[#7ED957] flex flex-col space-y-5 p-5 rounded-md">
           <DateSelector setToday={setToday} />
-          <WeatherReport date={today} />
+          <div className="flex">
+            <WeatherReport date={today} />
+            <CropRec />
+          </div>
         </div>
       </div>
     </Layout>

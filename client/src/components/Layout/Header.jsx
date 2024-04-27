@@ -52,12 +52,12 @@ const Header = () => {
                   AgriConnect
                 </h1>
               </Link>
-              {/* <button onClick={() => handleChangeLang(i18n, "hindi")}>
+              <button onClick={() => handleChangeLang(i18n, "hindi")}>
                 Hindi
               </button>
               <button onClick={() => handleChangeLang(i18n, "english")}>
                 English
-              </button> */}
+              </button>
             </div>
             {/*  */}
             <ul

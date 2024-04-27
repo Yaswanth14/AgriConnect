@@ -7,6 +7,7 @@ import Login from "./pages/auth/Login";
 import PageNotFound from "./pages/PageNotFound";
 import PrivateRoute from "./components/Routes/Private";
 import Weather from "./pages/Weather/Weather";
+import Trending from "./pages/trending/Trending";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/myprofile" element={<Weather />} />
+          <Route path="/trending" element={<Trending />} />
         </Route>
         {/* <Route path="profile/:username" element={<UserProfile />} /> */}
         <Route path="/signup" element={<Signup />} />

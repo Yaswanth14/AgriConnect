@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 import PageNotFound from "./pages/PageNotFound";
@@ -16,6 +16,7 @@ function App() {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/myprofile" element={<Weather />} />
         </Route>
         {/* <Route path="profile/:username" element={<UserProfile />} /> */}
         <Route path="/signup" element={<Signup />} />

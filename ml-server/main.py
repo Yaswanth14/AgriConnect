@@ -1,6 +1,8 @@
-from flask import Flask, request, json
+from flask import Flask, request, json, jsonify
 from ask import Ask
 import pickle
+import time
+from retrieve import script
 from flask_cors import CORS
 # create the Flask app
 app = Flask(__name__)
@@ -46,6 +48,21 @@ def form_example1():
         response = askinstance.process(message)
         data = {"message": response}
         return json.dumps(data)
+
+@app.route('/request', methods=['GET'])
+def requestPage():
+    commodityQuery = request.args.get('commodity')
+    stateQuery = request.args.get('state')
+    marketQuery = request.args.get('market')
+
+    if not commodityQuery or not stateQuery or not marketQuery:
+        return jsonify({"error": "Missing query parameters"})
+
+    try:
+        json_data = json.dumps(script(stateQuery, commodityQuery, marketQuery), indent=4)
+        return json_data
+    except Exception as e:
+        return jsonify({"error": str(e)})
 if __name__ == '__main__':
     # run app in debug mode on port 5000
     app.run(host="0.0.0.0", debug=True, port=5000)

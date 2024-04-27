@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 require("dotenv/config");
 
 const userRouter = require("./Router/userRouter");
+const postRouter = require("./Router/postRouter");
 
 //databse config
 connectDB();
@@ -18,10 +19,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRouter);
+app.use("/posts", postRouter);
 
 //rest api
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to ecommerce app</h1>");
+  res.send("<h1>Welcome to Agri Connect</h1>");
 });
 
 //PORT

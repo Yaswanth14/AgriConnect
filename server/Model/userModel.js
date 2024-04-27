@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { Post } = require("./postModel");
 const jwt = require("jsonwebtoken");
 require("dotenv/config");
 
@@ -25,6 +26,12 @@ const userSchema = Schema(
       data: Buffer,
       contentType: String,
     },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
   },
   { timestamps: true }
 );

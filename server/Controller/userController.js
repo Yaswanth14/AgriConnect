@@ -1,5 +1,4 @@
 const { User } = require("../Model/userModel");
-
 const { comparePassword, hashPassword } = require("./../helpers/authHelper.js");
 
 module.exports.signUp = async (req, res) => {

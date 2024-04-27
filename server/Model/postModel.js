@@ -15,7 +15,7 @@ module.exports.Post = model(
       message: String,
       name: String,
       username: String,
-      createdAt: { type: Date, default: Date.now, index: { expires: 300 } },
+      createdAt: { type: Date, default: Date.now },
     },
     { timestamps: true }
   )

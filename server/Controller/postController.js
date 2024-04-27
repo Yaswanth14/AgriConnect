@@ -52,3 +52,25 @@ module.exports.getPosts = async (req, res) => {
     });
   }
 };
+
+module.exports.getUserPosts = async (req, res) => {
+  try {
+    const userId = req._id;
+    const postIds = User.findOne({ _id: userId }).select("posts");
+
+    Post.find({ _id: { $in: postIds } })
+      .select("link message createdAt")
+      .exec((err, posts) => {
+        if (err) {
+          return res.status(500).json({ error: err.message });
+        }
+
+        res.json({ success: true, posts });
+      });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(400)
+      .json({ success: false, message: "Failed to get user posts" });
+  }
+};

@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 
 const CropRec = () => {
 
-    const [N, setN] = useState(68);
-    const [P, setP] = useState(57);
-    const [K, setK] = useState(36);
-    const [temperature, setTemperature] = useState(23);
-    const [humidity, setHumidity] = useState(85);
-    const [ph, setPh] = useState(7);
-    const [rainfall, setRainfall] = useState(230);
+    const [N, setN] = useState(null);
+    const [P, setP] = useState(null);
+    const [K, setK] = useState(null);
+    const [temperature, setTemperature] = useState(null);
+    const [humidity, setHumidity] = useState(null);
+    const [ph, setPh] = useState(null);
+    const [rainfall, setRainfall] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(import.meta.env.ML_API);
+            console.log(import.meta.env.VITE_ML_API);
             const res = await axios.post(`http://localhost:5000/predict`, {
                 N, P, K, temperature, humidity, ph, rainfall
               });

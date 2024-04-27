@@ -41,7 +41,7 @@ module.exports.getPosts = async (req, res) => {
     let posts = await Post.find({});
     res.status(200).send({
       success: true,
-      messagee: "All posts fetched successfully!",
+      message: "All posts fetched successfully!",
       posts,
     });
   } catch (error) {

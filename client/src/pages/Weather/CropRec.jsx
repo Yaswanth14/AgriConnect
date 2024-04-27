@@ -2,35 +2,39 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const CropRec = () => {
+  const [N, setN] = useState(null);
+  const [P, setP] = useState(null);
+  const [K, setK] = useState(null);
+  const [temperature, setTemperature] = useState(null);
+  const [humidity, setHumidity] = useState(null);
+  const [ph, setPh] = useState(null);
+  const [rainfall, setRainfall] = useState(null);
 
-    const [N, setN] = useState(null);
-    const [P, setP] = useState(null);
-    const [K, setK] = useState(null);
-    const [temperature, setTemperature] = useState(null);
-    const [humidity, setHumidity] = useState(null);
-    const [ph, setPh] = useState(null);
-    const [rainfall, setRainfall] = useState(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // console.log(import.meta.env.VITE_ML_API);
+      const res = await axios.post(`${import.meta.env.VITE_ML_API}/predict`, {
+        N,
+        P,
+        K,
+        temperature,
+        humidity,
+        ph,
+        rainfall,
+      });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            console.log(import.meta.env.VITE_ML_API);
-            const res = await axios.post(`http://localhost:5000/predict`, {
-                N, P, K, temperature, humidity, ph, rainfall
-              });
-
-            if(res)
-            {
-                console.log(res.data.suggestion);
-            }
-        } catch (error) {
-            console.log(error);
-        }
+      if (res) {
+        console.log(res.data.suggestion);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
   return (
     <div>
-        <div>CropRec</div>
+      <div>CropRec</div>
       <form
         onSubmit={handleSubmit}
         className="bg-white py-3 pb-10 rounded-lg flex flex-col px-10"
@@ -105,7 +109,7 @@ const CropRec = () => {
             required
           />
         </div>
-        
+
         <button
           type="submit"
           className="bg-[#00BF63] text-white px-3 py-2 rounded-md mt-5 mb-3"

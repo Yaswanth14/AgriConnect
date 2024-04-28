@@ -3,30 +3,34 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/Auth";
+import ProfileData from "./ProfileData";
 
 const Profile = () => {
-    const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
 
-    useEffect(() => {
-        const getPosts = async () => {
-          try {
-            const {data} = await axios.get(
-              `${import.meta.env.VITE_API}/posts/userposts`
-            );
-            console.log(data.data);
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        getPosts();
-      }, []);
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API}/posts/userposts`
+        );
+        console.log(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPosts();
+  }, []);
 
   return (
     <Layout>
-        <h1>Profile</h1>
-        <p>Name: {auth.user.name} email: {auth.user.email} username: {auth.user.username}</p>
+      <div className="p-5 flex">
+        <div className="bg-[#7ED957] p-5 rounded-md flex flex-col flex-1">
+          <ProfileData />
+        </div>
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

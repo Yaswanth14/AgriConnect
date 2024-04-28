@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/Auth.jsx";
 import global_english from "./translations/english/global.json";
 import global_hindi from "./translations/hindi/global.json";
+import global_telugu from "./translations/telugu/global.json";
 import i18next, { reloadResources } from "i18next";
 import { I18nextProvider } from "react-i18next";
 
@@ -18,6 +19,9 @@ i18next.init({
     },
     hindi: {
       global: global_hindi,
+    },
+    telugu: {
+      global: global_telugu,
     },
   },
 });

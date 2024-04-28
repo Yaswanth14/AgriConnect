@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import axios from "axios";
+import LinearProgress from "@mui/material/LinearProgress";
 
 function Trending() {
   const [item, setitem] = useState("Potato");
   const [state, setstate] = useState("Karnataka");
   const [city, setcity] = useState("Bangalore");
   const [data, setdata] = useState(null);
+  const [loader, setloader] = useState(false);
 
   const handleSubmit = async () => {
     try {
+      setloader(true);
       const res = await axios.get(
         `${
           import.meta.env.VITE_ML_API
@@ -18,6 +21,7 @@ function Trending() {
 
       if (res) {
         console.log(res);
+        setloader(false);
         setdata(res.data);
         console.log(data);
       }
@@ -77,6 +81,7 @@ function Trending() {
             ))}
         </div> */}
         {/*  ****************************/}
+        {loader && <LinearProgress color="success" />}
         <div className="mt-5">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -107,6 +112,7 @@ function Trending() {
                 </th>
               </tr>
             </thead>
+
             {data == null && (
               <h1 className="mt-3">
                 Fetch prices to know the current market price of {item}

@@ -1,0 +1,16 @@
+{
+    "header": {
+        "home" : "హోమ్",
+        "weather": "వాతావరణం",
+        "trending": "ట్రెండింగ్‌",
+        "profile": "ప్రొఫైల్",
+        "logout": "లాగ్అవుట్"
+    },
+    "login": {
+        "login": "లాగిన్",
+        "email": "ఇమెయిల్",
+        "password": "పాస్వర్డ్",
+        "don't have an account": "అకౌంట్ లేదా?",
+        "signup": "నమోదు"
+    }
+}

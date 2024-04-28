@@ -56,17 +56,13 @@ module.exports.getPosts = async (req, res) => {
 module.exports.getUserPosts = async (req, res) => {
   try {
     const userId = req._id;
-    const postIds = User.findOne({ _id: userId }).select("posts");
+    const postIds = await User.findOne({ _id: userId }).select("posts");
 
-    Post.find({ _id: { $in: postIds } })
-      .select("link message createdAt")
-      .exec((err, posts) => {
-        if (err) {
-          return res.status(500).json({ error: err.message });
-        }
+    const data = await Post.find({ _id: { $in: postIds.posts } }).select(
+      "username name link createdAt"
+    );
 
-        res.json({ success: true, posts });
-      });
+    res.json({ success: true, data });
   } catch (error) {
     console.log(error);
     res

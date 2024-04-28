@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import "./ComponentStyles/Other.css"
 
 const Spinner = () => {
   const [count, setCount] = useState(4);
@@ -7,24 +8,23 @@ const Spinner = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCount((prevValue) => --prevValue);
+      setCount((prevValue) => --prevValue)
     }, 1000);
-    count === 0 && navigate("/login");
+    count === 0 && navigate("/signin")
     return () => clearInterval(interval);
-  }, [count, navigate]);
+  }, [count, navigate])
   return (
     <>
-      <div
-        className="d-flex flex-column justify-content-center align-items-center"
-        style={{ height: "100vh" }}
-      >
-        <h1 className="text-center">redirecting in {count} secs</h1>
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    </>
-  );
-};
+        <div className="spinner"
+        style={{height: '100vh'}}>
 
-export default Spinner;
+          <h1 className='text-center'>redirecting in {count} secs</h1>
+            <div className="spinner-border" role='status'>
+                <span className='visually-hidden'>Loading...</span>
+            </div>
+        </div>
+    </>
+  )
+}
+
+export default Spinner

@@ -146,7 +146,7 @@ const Header = () => {
                     <li className="px-2 py-2 rounded-md duration-100 ease-in-out hover:bg-[#7ED957]">
                       <NavLink
                         onClick={handleSignout}
-                        to="/logout"
+                        to="/login"
                         className="flex space-x-5 items-center"
                       >
                         <LogoutIcon

@@ -58,7 +58,7 @@ function Posts() {
               <p>{formatDate(e.createdAt)}</p>
             </div>
             <div className="flex justify-center py-3">
-              <img src={e.link} alt="" className="w-fit my-3 rounded-md" />
+              <img src={e.link} alt="" className="w-fit my-3 rounded-md max-h-[400px]" />
             </div>
             <p className="text-sm">{e.message}</p>
           </div>

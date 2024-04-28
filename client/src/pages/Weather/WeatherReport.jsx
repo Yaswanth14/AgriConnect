@@ -47,8 +47,8 @@ const WeatherReport = ({ date }) => {
   }, [date]);
 
   return (
-    <div className="bg-[#00BF63] p-3 text-white font-bold rounded-md mr-5 h-[260px]">
-      <h1 className="text-center text-xl mb-2 font-extrabold">
+    <div className="bg-[#00BF63] p-7 py-10 text-white font-bold rounded-md mr-5">
+      <h1 className="text-center text-xl mb-7 font-extrabold">
         Weather Report
       </h1>
       {weatherData ? (

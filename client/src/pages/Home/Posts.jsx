@@ -27,6 +27,8 @@ function Posts() {
       {posts !== null &&
         posts.map((e, i) => (
           <div className="" key={i}>
+            <p>Posted by {e.name}</p>
+            <img src={e.link} alt="" className="w-fit my-3 rounded-md" />
             <p>{e.message}</p>
           </div>
         ))}

@@ -37,7 +37,7 @@ const Header = () => {
         // style={{ zIndex: 9999 }}
       >
         <div className="flex w-full h-[100vh] bg-[#00BF63]">
-          <div className="flex-col items-center justify-between w-screen px-3 max-[1000px]:px-2">
+          <div className="flex-col items-center justify-between w-screen px-3">
             <div className="mb-3">
               <Link
                 to="/"
@@ -61,7 +61,7 @@ const Header = () => {
             </div>
             {/*  */}
             <ul
-              className="flex-1 flex-col space-y-2  text-2xl text-white font-semibold h-[calc(100vh-150px)]
+              className="flex-1 flex-col space-y-2  text-2xl text-white font-semibold h-[calc(100vh-200px)]
             "
             >
               {!auth.user ? (
@@ -74,7 +74,7 @@ const Header = () => {
                   </li>
                 </>
               ) : (
-                <div className="flex flex-col h-[calc(100vh-110px)] justify-between">
+                <div className="flex flex-col h-[calc(100vh-140px)] justify-between">
                   <div className="flex flex-col space-y-3">
                     <li className="px-2 py-2 rounded-md duration-100 ease-in-out hover:bg-[#7ED957]">
                       <NavLink to="/" className="flex space-x-5 items-center">

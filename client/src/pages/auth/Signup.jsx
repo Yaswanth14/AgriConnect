@@ -56,7 +56,7 @@ const Signup = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(`/`);
+        navigate(`/login`);
       } else {
         toast.error(res.data.message);
       }

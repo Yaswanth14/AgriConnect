@@ -31,7 +31,7 @@ const Login = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate("/profiles/all");
+        navigate("/");
       } else {
         toast.error(res.data.message);
       }
